@@ -1,0 +1,33 @@
+{% extends "food/base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vinsmoke Sanji</title>
+    </head>
+    <body>
+
+       {% block body%}
+        {% for item in item_list %}
+        <div class="row">
+            <div class="col-md-2 offset-md-2 custom-padding">
+                <img class="card " width="150px" src="{{ item.item_image }}">
+            </div>
+            <div class="col-md-4 custom-padding">
+                <h3>{{ item.item_name }}</h3>
+                <h5>{{ item.item_desc }}</h5>
+                <h6>${{ item.item_price }}</h6>
+                <h4>Posted by:- {{ item.user_name }}</h4>
+
+            </div>
+            <div class="col-md-2 custom-padding">
+                <a href="{% url 'food:detail' item.id %}" class="btn btn-outline-success">Details</a>
+            </div>
+            <div class="col-md-2 padding">
+                <a href="{% url 'food:update_item' item.id %}" class="btn btn-outline-secondary">Edit Item</a>
+            </div>
+        </div>
+        {% endfor %}
+       {% endblock%}
+
+    </body>
+</html>
